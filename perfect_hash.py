@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+
 """
 Generate a minimal perfect hash function for the keys in a file,
 desired hash values may be specified within this file as well.
@@ -46,6 +47,7 @@ If the procedure fails, G is cyclic, and we go back to step 2, replacing G
 with a new graph, and thereby discarding the vertex values from the failed
 attempt.
 """
+
 from __future__ import absolute_import, division, print_function
 
 import sys
@@ -56,11 +58,7 @@ import shutil
 import tempfile
 from collections import defaultdict
 from os.path import join
-
-if sys.version_info[0] == 2:
-    from cStringIO import StringIO
-else:
-    from io import StringIO
+from io import StringIO
 
 
 __version__ = '0.4.4'
@@ -535,7 +533,7 @@ is processed and the output code is written to stdout.
     trials = args.trials
     verbose = args.verbose
 
-    if args.TMPL_FILE and not args.TMPL_FILE.count('tmpl'):
+    if not args.output and (args.TMPL_FILE and not args.TMPL_FILE.count('tmpl')):
         p.error("template filename does not contain 'tmpl'")
 
     if args.hft == 1:
